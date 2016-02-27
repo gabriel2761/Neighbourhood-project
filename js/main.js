@@ -1,31 +1,43 @@
 
+var Location = function(name, lat, lng) {
+	this.name = name;
+	this.lat = lat;
+	this.lng = lng;
+};
+
+var locations = [
+	new Location('Pyrmont', -33.8665, 151.1956),
+	new Location('Art Gallery of NSW' ,-33.868791, 151.217413),
+	new Location('Luna Park', -33.847677, 151.209699),
+	new Location('Toronga Zoo', -33.839200, 151.240775),
+	new Location('Opera House', -33.856657, 151.215270)
+];
+
 function initMap() {
 
-	var locations = {
-		pyrmont: new google.maps.LatLng(-33.8665, 151.1956),
-		artGallery: new google.maps.LatLng(-33.868791, 151.217413),
-		lunaPark: new google.maps.LatLng(-33.847677, 151.209699),
-		torongaZoo: new google.maps.LatLng(-33.839200, 151.240775),
-		operaHouse: new google.maps.LatLng(-33.856657, 151.215270)
-	};
-
 	map = new google.maps.Map(document.getElementById('map'), {
-		center: locations.operaHouse,
-	    zoom: 14
+		center: new google.maps.LatLng(-33.856657, 151.215270),
+	    zoom: 13
 	});
 
-	for (var location in locations) {
+	locations.forEach(function(location) {
 		new google.maps.Marker({
-			position: locations[location],
+			position: new google.maps.LatLng(location.lat, location.lng),
 			map: map,
-			title: location
+			title: location.name
 		});
-	}
+	});
 
 }
 
 var AppViewModel = function() {
-	this.name = ko.observable('Hello, World');
+	this.locations = ko.observableArray(locations);
+
+	this.pushLocations = function(location) {
+		this.locations.push(location);
+	};
+
 };
 
 ko.applyBindings(new AppViewModel());
+
