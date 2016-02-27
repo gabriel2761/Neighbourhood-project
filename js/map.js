@@ -20,7 +20,6 @@ function initMap() {
 			map: map,
 			title: location
 		});
-		console.log(location);
 	}
 
 }
