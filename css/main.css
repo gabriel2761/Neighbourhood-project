@@ -5,6 +5,17 @@ body {
 	padding: 0;
 }
 
+main {
+	display: flex;
+	height: 100%;
+}
+
 #map {
+	height: 100%;
+	width: 100%;
+}
+
+#listview-pane {
+	width: 200px;
 	height: 100%;
 }
