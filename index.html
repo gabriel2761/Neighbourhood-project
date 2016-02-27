@@ -8,9 +8,12 @@
 	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+	<div id="map"></div>
 	<h1 data-bind="text: name"></h1>
 
 	<script src="bower_components/knockout/dist/knockout.js"></script>
+	<script src="js/map.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFEuVCyd4zzUXeJ8qQ1nzp7uwN9XQiV6g&callback=initMap" async defer></script>
 	<script src="js/main.js"></script>
 </body>
 </html>
