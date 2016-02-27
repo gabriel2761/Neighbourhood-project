@@ -23,10 +23,4 @@ function initMap() {
 		console.log(location);
 	}
 
-	new google.maps.Marker({
-		position: new google.maps.LatLng(),
-		map: map,
-		title: 'miko'
-	});
-
 }
