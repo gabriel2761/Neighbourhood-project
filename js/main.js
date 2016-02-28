@@ -37,6 +37,18 @@ var AppViewModel = function() {
 		this.locations.push(location);
 	};
 
+	this.search = function(letters) {
+		var result = [];
+		this.locations().forEach(function(location) {
+
+			if (location === '') return this.locations;
+
+			if (letters.toLowerCase() === location.name.substring(0, letters.length).toLowerCase()) {
+				result.push(location);
+			}
+		});
+		return result;
+	};
 };
 
 ko.applyBindings(new AppViewModel());
