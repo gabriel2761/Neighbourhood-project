@@ -32,21 +32,16 @@ function initMap() {
 
 var AppViewModel = function() {
 	this.locations = ko.observableArray(locations);
+	this.keyword = ko.observable('Pyrmont');
 
-	this.pushLocations = function(location) {
-		this.locations.push(location);
-	};
-
-	this.search = function(letters) {
-		var result = [];
-		this.locations().forEach(function(location) {
-
-			if (location === '') return this.locations;
-
-			if (letters.toLowerCase() === location.name.substring(0, letters.length).toLowerCase()) {
-				result.push(location);
+	this.search = function() {
+		var result = ko.observableArray([]);
+		for (var i = 0; i < locations.length; i++) {
+			// if (this.keyword().toLowerCase() === locations[i].name.substring(0, this.keyword().length).toLowerCase()) {
+			if (locations[i].name.toLowerCase().indexOf(this.keyword().toLowerCase()) != -1) {
+				result.push(locations[i]);
 			}
-		});
+		}
 		return result;
 	};
 };

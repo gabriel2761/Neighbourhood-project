@@ -11,8 +11,8 @@
 
 	<main>
 		<div id="listview-pane">
-			<input type="text" id="search">
-			<ul data-bind="foreach: {data: search(''), as: 'location'}" id="listview">
+			<input data-bind="textInput: keyword, event: { keyup: search() }" type="text" id="search">
+			<ul data-bind="foreach: {data: search(), as: 'location'}" id="listview">
 				<li data-bind="text: location.name" class="location"></li>
 			</ul>
 		</div>
