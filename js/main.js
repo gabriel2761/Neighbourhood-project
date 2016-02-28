@@ -37,7 +37,6 @@ var AppViewModel = function() {
 	this.search = function() {
 		var result = ko.observableArray([]);
 		for (var i = 0; i < locations.length; i++) {
-			// if (this.keyword().toLowerCase() === locations[i].name.substring(0, this.keyword().length).toLowerCase()) {
 			if (locations[i].name.toLowerCase().indexOf(this.keyword().toLowerCase()) != -1) {
 				result.push(locations[i]);
 			}
