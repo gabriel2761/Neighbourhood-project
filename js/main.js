@@ -12,20 +12,24 @@ function initMap() {
 	};
 
 	AppViewModel.prototype.addMarker = function(title, lat, lng) {
-		this.markers().push(new google.maps.Marker({
+		var marker = new google.maps.Marker({
 			position: new google.maps.LatLng(lat, lng),
 			map: map,
 			title: title
-		}));
+		});
+		marker.infoWindow = new google.maps.InfoWindow({
+			content: 'Hello, World'
+		});
+		marker.addListener('click', function() {
+			this.infoWindow.open(map, marker);
+		});
+		this.markers().push(marker);
 	};
 
 	AppViewModel.prototype.setMarkers = function(markers) {
 		for (var i = 0; i < markers().length; i++) {
 			if (this.previousResults.indexOf(markers()[i]) === -1) markers()[i].setMap(map);
 		}
-		// markers().forEach(function(marker) {
-		// 	if () marker.setMap(map);
-		// });
 	};
 
 	AppViewModel.prototype.clearMarkers = function(results) {
