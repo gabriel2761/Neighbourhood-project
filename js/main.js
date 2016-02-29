@@ -8,6 +8,7 @@ function initMap() {
 	var AppViewModel = function() {
 		this.keyword = ko.observable('');
 		this.markers = ko.observableArray([]);
+		this.previousResults = ko.observableArray([]);
 	};
 
 	AppViewModel.prototype.addMarker = function(title, lat, lng) {
@@ -19,14 +20,17 @@ function initMap() {
 	};
 
 	AppViewModel.prototype.setMarkers = function(markers) {
-		markers().forEach(function(marker) {
-			marker.setMap(map);
-		});
+		for (var i = 0; i < markers().length; i++) {
+			if (this.previousResults.indexOf(markers()[i]) === -1) markers()[i].setMap(map);
+		}
+		// markers().forEach(function(marker) {
+		// 	if () marker.setMap(map);
+		// });
 	};
 
-	AppViewModel.prototype.clearMarkers = function() {
+	AppViewModel.prototype.clearMarkers = function(results) {
 		this.markers().forEach(function(marker) {
-			marker.setMap(null);
+			if (results().indexOf(marker) === -1) marker.setMap(null);
 		});
 	};
 
@@ -37,8 +41,9 @@ function initMap() {
 				results().push(this.markers()[i]);
 			}
 		}
-		this.clearMarkers();
+		this.clearMarkers(results);
 		this.setMarkers(results);
+		this.previousResults = results;
 		return results;
 	};
 
