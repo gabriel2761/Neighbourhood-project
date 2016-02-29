@@ -17,8 +17,9 @@ function initMap() {
 			map: map,
 			title: title
 		});
+		marker.content = 'Hello, World';
 		marker.infoWindow = new google.maps.InfoWindow({
-			content: 'Hello, World'
+			content: marker.content
 		});
 		marker.addListener('click', function() {
 			this.infoWindow.open(map, marker);
@@ -49,6 +50,10 @@ function initMap() {
 		this.setMarkers(results);
 		this.previousResults = results;
 		return results;
+	};
+
+	AppViewModel.prototype.click = function(index) {
+		alert(this.markers()[index()].content);
 	};
 
 	var viewModel = new AppViewModel();

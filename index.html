@@ -13,7 +13,7 @@
 		<div id="listview-pane">
 			<input data-bind="textInput: keyword" type="text" id="search">
 			<ul data-bind="foreach: {data: search(), as: 'location'}" id="listview">
-				<li data-bind="text: location.title" class="location"></li>
+				<li data-bind="text: location.title, click: function() { $parent.click($index) }" class="location"></li>
 			</ul>
 		</div>
 		<div id="map"></div>
