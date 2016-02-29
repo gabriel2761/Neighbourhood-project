@@ -13,7 +13,7 @@
 		<div id="listview-pane">
 			<input data-bind="textInput: keyword, event: { keyup: search() }" type="text" id="search">
 			<ul data-bind="foreach: {data: search(), as: 'location'}" id="listview">
-				<li data-bind="text: location.name" class="location"></li>
+				<li data-bind="text: location.title" class="location"></li>
 			</ul>
 		</div>
 		<div id="map"></div>
