@@ -64,6 +64,10 @@ function initMap() {
 			success: function(result) {
 				infoWindow.setContent('<h2>'+result[0]+'</h2><p>'+result[2][0]+'</p><a href="'+result[3][0]+'">Wikipedia</a>');
 				infoWindow.open(map, marker);
+			},
+			error: function(jqXHR, status, error) {
+				infoWindow.setContent('Failed to retrieve data');
+				infoWindow.open(map, marker);
 			}
 		});
 
