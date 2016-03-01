@@ -1,4 +1,5 @@
 function initMap() {
+	var infoWindow = new google.maps.InfoWindow();
 
 	var map = new google.maps.Map(document.getElementById('map'), {
 		center: new google.maps.LatLng(-33.856657, 151.215270),
@@ -61,8 +62,8 @@ function initMap() {
 			url: wiki_url,
 			dataType: 'jsonp',
 			success: function(result) {
-				var content = '<h2>'+result[0]+'</h2><p>'+result[2][0]+'</p><a href="'+result[3][0]+'">Wikipedia</a>';
-				new google.maps.InfoWindow({ content: content }).open(map, marker);
+				infoWindow.setContent('<h2>'+result[0]+'</h2><p>'+result[2][0]+'</p><a href="'+result[3][0]+'">Wikipedia</a>');
+				infoWindow.open(map, marker);
 			}
 		});
 
