@@ -52,6 +52,10 @@ function initMap() {
 	};
 
 	AppViewModel.prototype.getInfo = function(marker) {
+		marker.setAnimation(google.maps.Animation.BOUNCE);
+		setTimeout(function() {
+			marker.setAnimation(null);
+		}, 1450);
 		var wiki_url = 'https://en.wikipedia.org/w/api.php?action=opensearch&search='+marker.title+'&format=json';
 		$.ajax({
 			url: wiki_url,
@@ -61,6 +65,7 @@ function initMap() {
 				new google.maps.InfoWindow({ content: content }).open(map, marker);
 			}
 		});
+
 	};
 
 	var viewModel = new AppViewModel();
