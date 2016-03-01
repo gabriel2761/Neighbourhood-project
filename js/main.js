@@ -8,7 +8,7 @@ function initMap() {
 	var AppViewModel = function() {
 		this.keyword = ko.observable('');
 		this.markers = ko.observableArray([]);
-		this.previousResults = ko.observableArray([]);
+		this.results = ko.observableArray([]);
 	};
 
 	AppViewModel.prototype.addMarker = function(title, lat, lng) {
@@ -24,7 +24,7 @@ function initMap() {
 
 	AppViewModel.prototype.setMarkers = function(markers) {
 		for (var i = 0; i < markers().length; i++) {
-			if (this.previousResults.indexOf(markers()[i]) === -1) markers()[i].setMap(map);
+			if (this.results.indexOf(markers()[i]) === -1) markers()[i].setMap(map);
 		}
 	};
 
@@ -43,12 +43,15 @@ function initMap() {
 		}
 		this.clearMarkers(results);
 		this.setMarkers(results);
-		this.previousResults = results;
+		this.results = results;
 		return results;
 	};
 
 	AppViewModel.prototype.click = function(index) {
-		this.getInfo(this.markers()[index()]);
+		var self = this;
+		self.results().forEach(function(marker) {
+			self.getInfo(self.results()[index()]);
+		});
 	};
 
 	AppViewModel.prototype.getInfo = function(marker) {
