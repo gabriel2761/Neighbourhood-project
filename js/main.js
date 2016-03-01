@@ -57,7 +57,7 @@ function initMap() {
 			url: wiki_url,
 			dataType: 'jsonp',
 			success: function(result) {
-				var content = '<h2>'+result[0]+'</h2><p>'+result[2][0]+'</p>';
+				var content = '<h2>'+result[0]+'</h2><p>'+result[2][0]+'</p><a href="'+result[3][0]+'">Wikipedia</a>';
 				new google.maps.InfoWindow({ content: content }).open(map, marker);
 			}
 		});
