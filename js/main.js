@@ -12,23 +12,13 @@ function initMap() {
 	};
 
 	AppViewModel.prototype.addMarker = function(title, lat, lng) {
+		var self = this;
 		var marker = new google.maps.Marker({
 			position: new google.maps.LatLng(lat, lng),
 			map: map,
 			title: title
 		});
-		marker.addListener('click', function() {
-			var wiki_url = 'https://en.wikipedia.org/w/api.php?action=opensearch&search='+marker.title+'&format=json';
-			$.ajax({
-				url: wiki_url,
-				dataType: 'jsonp',
-				success: function(result) {
-					var content = '<h2>'+result[0]+'</h2><p>'+result[2][0]+'</p>';
-					new google.maps.InfoWindow({ content: content }).open(map, marker);
-				}
-			});
-		});
-
+		marker.addListener('click', function() {self.getInfo(marker);});
 		this.markers().push(marker);
 	};
 
@@ -58,7 +48,19 @@ function initMap() {
 	};
 
 	AppViewModel.prototype.click = function(index) {
-		alert(this.markers()[index()].content);
+		this.getInfo(this.markers()[index()]);
+	};
+
+	AppViewModel.prototype.getInfo = function(marker) {
+		var wiki_url = 'https://en.wikipedia.org/w/api.php?action=opensearch&search='+marker.title+'&format=json';
+		$.ajax({
+			url: wiki_url,
+			dataType: 'jsonp',
+			success: function(result) {
+				var content = '<h2>'+result[0]+'</h2><p>'+result[2][0]+'</p>';
+				new google.maps.InfoWindow({ content: content }).open(map, marker);
+			}
+		});
 	};
 
 	var viewModel = new AppViewModel();
