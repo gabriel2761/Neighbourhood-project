@@ -17,13 +17,18 @@ function initMap() {
 			map: map,
 			title: title
 		});
-		marker.content = 'Hello, World';
-		marker.infoWindow = new google.maps.InfoWindow({
-			content: marker.content
-		});
 		marker.addListener('click', function() {
-			this.infoWindow.open(map, marker);
+			var wiki_url = 'https://en.wikipedia.org/w/api.php?action=opensearch&search='+marker.title+'&format=json';
+			$.ajax({
+				url: wiki_url,
+				dataType: 'jsonp',
+				success: function(result) {
+					var content = '<h2>'+result[0]+'</h2><p>'+result[2][0]+'</p>';
+					new google.maps.InfoWindow({ content: content }).open(map, marker);
+				}
+			});
 		});
+
 		this.markers().push(marker);
 	};
 
@@ -58,11 +63,11 @@ function initMap() {
 
 	var viewModel = new AppViewModel();
 
-	viewModel.addMarker('Pyrmont', -33.8665, 151.1956);
-	viewModel.addMarker('Art Gallery of NSW' ,-33.868791, 151.217413);
-	viewModel.addMarker('Luna Park', -33.847677, 151.209699);
-	viewModel.addMarker('Toronga Zoo', -33.839200, 151.240775);
-	viewModel.addMarker('Opera House', -33.856657, 151.215270);
+	viewModel.addMarker('Museum of Contemporary Art Australia', -33.859881, 151.208903);
+	viewModel.addMarker('Art Gallery of New South Wales' ,-33.868791, 151.217413);
+	viewModel.addMarker('Luna Park Sydney', -33.847677, 151.209699);
+	viewModel.addMarker('Taronga Zoo', -33.843078, 151.241928);
+	viewModel.addMarker('Sydney Opera House', -33.856657, 151.215270);
 
 	ko.applyBindings(viewModel);
 }
