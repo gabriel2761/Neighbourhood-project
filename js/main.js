@@ -48,10 +48,7 @@ function initMap() {
 	};
 
 	AppViewModel.prototype.click = function(index) {
-		var self = this;
-		self.results().forEach(function(marker) {
-			self.getInfo(self.results()[index()]);
-		});
+		this.getInfo(this.results()[index()]);
 	};
 
 	AppViewModel.prototype.getInfo = function(marker) {
