@@ -11,7 +11,7 @@
 
 	<main>
 		<div id="listview-pane">
-			<input id="search"  type="text" data-bind="textInput: keyword" placeholder="Search" >
+			<input id="search"  type="text" data-bind="textInput: keyword" onClick="this.setSelectionRange(0, this.value.length)" placeholder="Search" >
 			<ul id="listview" data-bind="foreach: {data: search(), as: 'location'}">
 				<li class="location" data-bind="text: location.title, click: function() { $parent.click($index) }"></li>
 			</ul>

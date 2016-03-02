@@ -122,6 +122,7 @@ function initMap() {
 	viewModel.addMarker('Royal Botanic Gardens, Sydney', -33.869162, 151.215705);
 	viewModel.addMarker('Westfield Bondi Junction', -33.891621, 151.250741);
 	viewModel.addMarker('Darling Harbour', -33.873483, 151.200308);
+	viewModel.addMarker('Queen Victoria Building', -33.871713, 151.206676);
 
 	viewModel.markers().sort(function(a, b) {
     	return (a.title < b.title) ? -1 : (a.title > b.title) ? 1 : 0;
