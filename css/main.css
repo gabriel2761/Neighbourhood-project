@@ -21,9 +21,31 @@ main {
 	width: 280px;
 	height: 100%;
 	background-color: #f6f6f6;
+	overflow-y: scroll;
+}
+
+#listview {
+	padding: 16px;
+}
+
+#search {
+	width: 100%;
+	border: none;
+	padding: 22px;
+	font-size: 19px;
+}
+
+#search:focus {
+	outline: none;
 }
 
 .location {
 	list-style-type: none;
-	padding: 6px 0;
+	padding: 10px 0;
 }
+
+.location:hover {
+	color: #7d46d6;
+	cursor: pointer;
+}
+
