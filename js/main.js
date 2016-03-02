@@ -123,6 +123,14 @@ function initMap() {
 	viewModel.addMarker('Westfield Bondi Junction', -33.891621, 151.250741);
 	viewModel.addMarker('Darling Harbour', -33.873483, 151.200308);
 	viewModel.addMarker('Queen Victoria Building', -33.871713, 151.206676);
+	viewModel.addMarker('Sea Life Sydney Aquarium', -33.870009, 151.202205);
+	viewModel.addMarker('The Rocks, Sydney', -33.858965, 151.207784);
+	viewModel.addMarker('Chinatown, Sydney', -33.877632, 151.204641);
+	viewModel.addMarker('Sydney Town Hall', -33.873209, 151.206593);
+	viewModel.addMarker('Bronte Beach', -33.903269, 151.268455);
+	viewModel.addMarker('Blue Mountains (New South Wales)', -33.652956, 150.442271);
+	viewModel.addMarker('Manly Beach', -33.792175, 151.287564);
+
 
 	viewModel.markers().sort(function(a, b) {
     	return (a.title < b.title) ? -1 : (a.title > b.title) ? 1 : 0;
