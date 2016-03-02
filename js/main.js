@@ -46,7 +46,6 @@ function initMap() {
 			}
 		});
 
-		console.log('======================== Keyword: ' + keyword);
 		results().sort(function(a, b) {
 			var first = a.title.toLowerCase().split(' '),
 				second = b.title.toLowerCase().split(' ');
@@ -69,9 +68,6 @@ function initMap() {
 					bLowestWord = second.indexOf(word);
 				}
 			});
-
-			console.log(a.title + ' (char:' + aLowestChar + ') ' + b.title +' (char:' + bLowestChar + ')');
-			console.log('word: ' + aLowestWord + ' word: ' + bLowestWord);
 
 			return (aLowestChar < bLowestChar) ? -1 : (aLowestChar > bLowestChar) ? 1 :
 				(aLowestWord < bLowestWord) ? -1 : (aLowestWord > bLowestChar) ? 1 : 0;
@@ -96,10 +92,9 @@ function initMap() {
 		$.ajax({
 			url: 'https://en.wikipedia.org/w/api.php?action=opensearch&search='+marker.title+'&format=json',
 			dataType: 'jsonp',
-			success: function(result) {
-				infoWindow.setContent('<h2>'+result[0]+'</h2><p>'+result[2][0]+'</p><a href="'+result[3][0]+'">Wikipedia</a>');
+		}).done(function(result) {
+			infoWindow.setContent('<h2>'+result[0]+'</h2><p>'+result[2][0]+'</p><a href="'+result[3][0]+'">Wikipedia</a>');
 				infoWindow.open(map, marker);
-			}
 		});
 
 	};
