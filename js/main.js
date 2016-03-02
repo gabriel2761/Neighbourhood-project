@@ -36,12 +36,47 @@ function initMap() {
 	};
 
 	AppViewModel.prototype.search = function() {
-		var results = ko.observableArray([]);
-		for (var i = 0; i < this.markers().length; i++) {
-			if (this.markers()[i].title.toLowerCase().indexOf(this.keyword().toLowerCase()) !== -1) {
-				results().push(this.markers()[i]);
+		var self = this,
+			keyword = self.keyword().toLowerCase();
+			results = ko.observableArray([]);
+
+		self.markers().forEach(function(marker) {
+			if (marker.title.toLowerCase().indexOf(keyword) !== -1) {
+				results().push(marker);
 			}
-		}
+		});
+
+		console.log('======================== Keyword: ' + keyword);
+		results().sort(function(a, b) {
+			var first = a.title.toLowerCase().split(' '),
+				second = b.title.toLowerCase().split(' ');
+
+			var	aLowestChar,
+				bLowestChar,
+				aLowestWord,
+				bLowestWord;
+
+			first.forEach(function(word) {
+				if ((aLowestChar === undefined && word.indexOf(keyword) != -1) || ((word.indexOf(keyword) < aLowestChar) && (word.indexOf(keyword) != -1))) {
+					aLowestChar = word.indexOf(keyword);
+					aLowestWord = first.indexOf(word);
+				}
+			});
+
+			second.forEach(function(word) {
+				if ((bLowestChar === undefined && word.indexOf(keyword) != -1) || ((word.indexOf(keyword) < bLowestChar) && (word.indexOf(keyword) != -1))) {
+					bLowestChar = word.indexOf(keyword);
+					bLowestWord = second.indexOf(word);
+				}
+			});
+
+			console.log(a.title + ' (char:' + aLowestChar + ') ' + b.title +' (char:' + bLowestChar + ')');
+			console.log('word: ' + aLowestWord + ' word: ' + bLowestWord);
+
+			return (aLowestChar < bLowestChar) ? -1 : (aLowestChar > bLowestChar) ? 1 :
+				(aLowestWord < bLowestWord) ? -1 : (aLowestWord > bLowestChar) ? 1 : 0;
+		});
+
 		this.clearMarkers(results);
 		this.setMarkers(results);
 		this.results = results;
@@ -57,9 +92,9 @@ function initMap() {
 		setTimeout(function() {
 			marker.setAnimation(null);
 		}, 1450);
-		var wiki_url = 'https://en.wikipedia.org/w/api.php?action=opensearch&search='+marker.title+'&format=json';
+
 		$.ajax({
-			url: wiki_url,
+			url: 'https://en.wikipedia.org/w/api.php?action=opensearch&search='+marker.title+'&format=json',
 			dataType: 'jsonp',
 			success: function(result) {
 				infoWindow.setContent('<h2>'+result[0]+'</h2><p>'+result[2][0]+'</p><a href="'+result[3][0]+'">Wikipedia</a>');
@@ -80,6 +115,11 @@ function initMap() {
 	viewModel.addMarker('Luna Park Sydney', -33.847677, 151.209699);
 	viewModel.addMarker('Taronga Zoo', -33.843078, 151.241928);
 	viewModel.addMarker('Sydney Opera House', -33.856657, 151.215270);
+	viewModel.addMarker('Bondi Beach', -33.891520, 151.276812);
+
+	viewModel.markers().sort(function(a, b) {
+    	return (a.title < b.title) ? -1 : (a.title > b.title) ? 1 : 0;
+	});
 
 	ko.applyBindings(viewModel);
 }
