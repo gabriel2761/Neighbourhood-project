@@ -18,6 +18,8 @@ main {
 }
 
 #listview-pane {
+	box-sizing: border-box;
+	padding-top: 60px;
 	width: 280px;
 	height: 100%;
 	background-color: #f6f6f6;
@@ -33,6 +35,8 @@ main {
 	border: none;
 	padding: 22px;
 	font-size: 19px;
+	position: fixed;
+	top: 0;
 }
 
 #search:focus {
