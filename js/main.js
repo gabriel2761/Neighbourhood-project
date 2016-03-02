@@ -116,6 +116,12 @@ function initMap() {
 	viewModel.addMarker('Taronga Zoo', -33.843078, 151.241928);
 	viewModel.addMarker('Sydney Opera House', -33.856657, 151.215270);
 	viewModel.addMarker('Bondi Beach', -33.891520, 151.276812);
+	viewModel.addMarker('Westfield Sydney', -33.869898, 151.207694);
+	viewModel.addMarker('The Star (casino)', -33.867998, 151.195245);
+	viewModel.addMarker('Hyde Park, Sydney', -33.873103, 151.211276);
+	viewModel.addMarker('Royal Botanic Gardens, Sydney', -33.869162, 151.215705);
+	viewModel.addMarker('Westfield Bondi Junction', -33.891621, 151.250741);
+	viewModel.addMarker('Darling Harbour', -33.873483, 151.200308);
 
 	viewModel.markers().sort(function(a, b) {
     	return (a.title < b.title) ? -1 : (a.title > b.title) ? 1 : 0;
