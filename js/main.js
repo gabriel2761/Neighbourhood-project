@@ -103,7 +103,7 @@ function initMap() {
 				aLowestWord,
 				bLowestWord;
 
-			// Finds the lowest index of a character in every word
+			// Finds the lowest index of a character in every word and index of word in title.
 			first.forEach(function(word) {
 				if ((aLowestChar === undefined && word.indexOf(keyword) != -1) ||
 					((word.indexOf(keyword) < aLowestChar) && (word.indexOf(keyword) != -1))) {
@@ -112,7 +112,7 @@ function initMap() {
 				}
 			});
 
-			// Finds the lowest index of a character in every word
+			// Finds the lowest index of a character in every word and index of word in title.
 			second.forEach(function(word) {
 				if ((bLowestChar === undefined && word.indexOf(keyword) != -1) ||
 					((word.indexOf(keyword) < bLowestChar) && (word.indexOf(keyword) != -1))) {
@@ -121,9 +121,9 @@ function initMap() {
 				}
 			});
 
-			// returns the marker with the title that has the keyword closest
-			// to the beggining of any of it's word. If they have the same index, then
-			// the word matching closest the the beggining of the title with take priority.
+			// Returns the marker with the title that has the keyword closest
+			// to the beginning of any of it's words. If they have the same index, then
+			// the word matching closest the the beginning of the title takes priority.
 			return (aLowestChar < bLowestChar) ? -1 : (aLowestChar > bLowestChar) ? 1 :
 				(aLowestWord < bLowestWord) ? -1 : (aLowestWord > bLowestChar) ? 1 : 0;
 		});
@@ -147,8 +147,7 @@ function initMap() {
 	 * and gets information about the location from Wikipedia to
 	 * display to the user.
 	 *
-	 * @param  {[type]} marker [description]
-	 * @return {[type]}        [description]
+	 * @param  {object} marker Google map marker
 	 */
 	AppViewModel.prototype.getInfo = function(marker) {
 		marker.setAnimation(google.maps.Animation.BOUNCE);
@@ -171,7 +170,7 @@ function initMap() {
 
 	var viewModel = new AppViewModel();
 
-	// Hardcoded locations to display
+	// Hardcoded locations
 	viewModel.addMarker('Museum of Contemporary Art Australia', -33.859881, 151.208903);
 	viewModel.addMarker('Art Gallery of New South Wales' ,-33.868791, 151.217413);
 	viewModel.addMarker('Luna Park Sydney', -33.847677, 151.209699);
