@@ -53,3 +53,10 @@ main {
 	cursor: pointer;
 }
 
+.map-error {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+

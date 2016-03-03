@@ -1,3 +1,7 @@
+function mapError() {
+	$('#map').append('<div class="map-error"><h3>Google Maps has failed to load</h3><div>');
+}
+
 function initMap() {
 	// Info window for markers to display information
 	var infoWindow = new google.maps.InfoWindow();
