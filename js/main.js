@@ -1,3 +1,6 @@
+/**
+ * function is called if google map apis script fails to load.
+ */
 function mapError() {
 	$('#map').append('<div class="map-error"><h3>Google Maps has failed to load</h3><div>');
 }
@@ -39,7 +42,7 @@ function initMap() {
 			title: title
 		});
 		marker.addListener('click', function() {self.getInfo(marker);});
-		this.markers().push(marker);
+		self.markers().push(marker);
 	};
 
 	/**
@@ -125,9 +128,9 @@ function initMap() {
 				(aLowestWord < bLowestWord) ? -1 : (aLowestWord > bLowestChar) ? 1 : 0;
 		});
 
-		this.clearMarkers(results);
-		this.setMarkers(results);
-		this.results = results;
+		self.clearMarkers(results);
+		self.setMarkers(results);
+		self.results = results;
 		return results;
 	};
 
@@ -143,7 +146,7 @@ function initMap() {
 	 * Fired when marker is selected. Opens an info window on the map
 	 * and gets information about the location from Wikipedia to
 	 * display to the user.
-
+	 *
 	 * @param  {[type]} marker [description]
 	 * @return {[type]}        [description]
 	 */
