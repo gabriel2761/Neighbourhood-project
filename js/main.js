@@ -23,6 +23,12 @@ function initMap() {
 	    },
 	});
 
+	var bounds = new google.maps.LatLngBounds();
+	bounds.extend(new google.maps.LatLng(-33.903269, 151.268455)); // Bronte Beach
+	bounds.extend(new google.maps.LatLng(-33.792175, 151.287564)); // Manly Beach
+	bounds.extend(new google.maps.LatLng(-33.867998, 151.195245)); // The star
+	map.fitBounds(bounds);
+
 	/**
 	 * @class Initiates class to be watched with knockout js.
 	 */
