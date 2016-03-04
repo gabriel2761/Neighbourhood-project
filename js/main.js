@@ -62,9 +62,10 @@ function initMap() {
 	 * @param {array} markers Contains an array of markers
 	 */
 	AppViewModel.prototype.setMarkers = function(markers) {
-		for (var i = 0; i < markers().length; i++) {
-			if (this.results.indexOf(markers()[i]) === -1) markers()[i].setMap(map);
-		}
+		var self = this;
+		markers().forEach(function(marker) {
+			if (self.results().indexOf(marker) === -1) marker.setVisible(true);
+		});
 	};
 
 	/**
@@ -74,7 +75,7 @@ function initMap() {
 	 */
 	AppViewModel.prototype.clearMarkers = function(results) {
 		this.markers().forEach(function(marker) {
-			if (results().indexOf(marker) === -1) marker.setMap(null);
+			if (results().indexOf(marker) === -1) marker.setVisible(false);
 		});
 	};
 
