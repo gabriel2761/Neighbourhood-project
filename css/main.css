@@ -17,11 +17,12 @@ main {
 	width: 100%;
 }
 
-#listview-pane {
-	box-sizing: border-box;
-	padding-top: 60px;
+#list-pane {
 	width: 280px;
-	height: 100%;
+}
+
+#listview-items {
+	height: calc(100vh - 66px);
 	background-color: #f6f6f6;
 	overflow-y: scroll;
 }
@@ -30,17 +31,35 @@ main {
 	padding: 0 16px;
 }
 
+#listview-bar {
+	display: flex;
+}
+
 #search {
 	width: 100%;
 	border: none;
 	padding: 22px;
 	font-size: 19px;
-	position: fixed;
 	top: 0;
 }
 
 #search:focus {
 	outline: none;
+}
+
+/** { border: 1px solid #000; }*/
+
+#hamburger {
+	color: #777;
+	font-size: 26px;
+	padding: 0 16px;
+	padding-top: 12px;
+	margin: 0;
+	cursor: pointer;
+}
+
+#hamburger:hover {
+	color: #d1739b;
 }
 
 .location {

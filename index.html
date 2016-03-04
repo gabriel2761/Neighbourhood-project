@@ -10,11 +10,16 @@
 <body>
 
 	<main>
-		<div id="listview-pane">
-			<input id="search"  type="text" data-bind="textInput: keyword" onClick="this.setSelectionRange(0, this.value.length)" placeholder="Search" >
-			<ul id="listview" data-bind="foreach: {data: search(), as: 'location'}">
-				<li class="location" data-bind="text: location.title, click: function() { $parent.click($index) }"></li>
-			</ul>
+		<div id="list-pane">
+			<div id="listview-bar">
+				<input id="search" type="text" data-bind="textInput: keyword" onClick="this.setSelectionRange(0, this.value.length)" placeholder="Search">
+				<p id="hamburger">&#9776;</p>
+			</div>
+			<div id="listview-items">
+				<ul id="listview" data-bind="foreach: {data: search(), as: 'location'}">
+					<li class="location" data-bind="text: location.title, click: function() { $parent.click($index) }"></li>
+				</ul>
+			</div>
 		</div>
 		<div id="map"></div>
 	</main>
