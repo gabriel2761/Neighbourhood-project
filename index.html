@@ -10,10 +10,11 @@
 <body>
 
 	<main>
-		<div id="list-pane">
+		<p id="hamburger-open" class="setHidden">&#9776;</p>
+		<div id="list-pane" class="visible">
 			<div id="listview-bar">
 				<input id="search" type="text" data-bind="textInput: keyword" onClick="this.setSelectionRange(0, this.value.length)" placeholder="Search">
-				<p id="hamburger">&#9776;</p>
+				<p id="hamburger-close">&#9776;</p>
 			</div>
 			<div id="listview-items">
 				<ul id="listview" data-bind="foreach: {data: search(), as: 'location'}">

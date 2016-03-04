@@ -15,7 +15,12 @@ function initMap() {
 	 */
 	var map = new google.maps.Map(document.getElementById('map'), {
 		center: new google.maps.LatLng(-33.856657, 151.215270),
-	    zoom: 13
+	    zoom: 13,
+	    disableDefaultUI: true, // a way to quickly hide all controls
+	    zoomControl: true,
+	    zoomControlOptions: {
+	      style: google.maps.ZoomControlStyle.LARGE
+	    },
 	});
 
 	/**
@@ -198,6 +203,32 @@ function initMap() {
 	});
 
 	ko.applyBindings(viewModel);
+
+	var pane = $('#list-pane');
+
+	$('#hamburger-close').click(function() {
+	 	pane.removeClass('visible').addClass('hidden');
+		$('#hamburger-open').removeClass('setHidden');
+	 	resizeMap();
+	});
+
+	$('#hamburger-open').click(function() {
+		pane.addClass('visible').removeClass('hidden');
+		$('#hamburger-open').addClass('setHidden');
+		resizeMap();
+	});
+
+	function resizeMap() {
+		setTimeout(function() {
+			google.maps.event.trigger(map, "resize");
+		}, 600);
+	}
 }
+
+
+
+
+
+
 
 

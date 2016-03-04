@@ -19,6 +19,17 @@ main {
 
 #list-pane {
 	width: 280px;
+	transition: transform 0.5s;
+    will-change: transform;
+	transition: width 0.5s;
+}
+
+#list-pane.visible {
+    width: 280px;
+}
+
+#list-pane.hidden {
+    width: 0;
 }
 
 #listview-items {
@@ -49,17 +60,40 @@ main {
 
 /** { border: 1px solid #000; }*/
 
-#hamburger {
+#hamburger-close {
 	color: #777;
 	font-size: 26px;
 	padding: 0 16px;
 	padding-top: 12px;
 	margin: 0;
-	cursor: pointer;
 }
 
-#hamburger:hover {
+#hamburger-close:hover {
+	cursor: pointer;
 	color: #d1739b;
+}
+
+#hamburger-open {
+	position: absolute;
+	top: 8px;
+	left: 8px;
+	margin: 0;
+	background-color: #fefefe;
+	padding: 0 10px;
+	font-size: 32px;
+	z-index: 5;
+	box-shadow: 0px 2px 4px #888888;
+	transition: left 0.5s;
+    will-change: transform;
+}
+
+#hamburger-open:hover {
+	cursor: pointer;
+	color: #d1739b;
+}
+
+#hamburger-open.setHidden {
+	left: -50px;
 }
 
 .location {
