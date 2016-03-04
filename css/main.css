@@ -113,3 +113,8 @@ main {
 	align-items: center;
 }
 
+.fa.fa-circle-o-notch.fa-spin {
+	padding: 20px;
+	font-size: 36px;
+}
+
