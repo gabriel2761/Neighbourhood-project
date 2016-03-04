@@ -11,19 +11,19 @@
 <body>
 
 	<main>
-		<p id="hamburger-open" class="setHidden">&#9776;</p>
-		<div id="list-pane" class="visible">
-			<div id="listview-bar">
-				<input id="search" type="text" data-bind="textInput: keyword" onClick="this.setSelectionRange(0, this.value.length)" placeholder="Search">
-				<p id="hamburger-close">&#9776;</p>
+		<p id="hamburger-open" class="hamburger-open setHidden">&#9776;</p>
+		<div id="list-pane" class="list-pane visible">
+			<div id="listview-bar" class="listview-bar">
+				<input id="search" class="search" type="text" data-bind="textInput: keyword" onClick="this.setSelectionRange(0, this.value.length)" placeholder="Search">
+				<p id="hamburger-close" class="hamburger-close">&#9776;</p>
 			</div>
-			<div id="listview-items">
-				<ul id="listview" data-bind="foreach: {data: search(), as: 'location'}">
+			<div id="listview-items" class="listview-items">
+				<ul id="listview" class="listview" data-bind="foreach: {data: search(), as: 'location'}">
 					<li class="location" data-bind="text: location.title, click: function() { $parent.click($index) }"></li>
 				</ul>
 			</div>
 		</div>
-		<div id="map"></div>
+		<div id="map" class="map"></div>
 	</main>
 
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>
