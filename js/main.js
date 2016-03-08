@@ -167,15 +167,18 @@ function initMap() {
 			marker.setAnimation(null);
 		}, 1450);
 
+		infoWindow.setContent('<i class="fa fa-circle-o-notch fa-spin"></i>');
+		infoWindow.open(map, marker);
+
 		$.ajax({
 			url: 'https://en.wikipedia.org/w/api.php?action=opensearch&search='+marker.title+'&format=json',
 			dataType: 'jsonp',
 		}).done(function(result) {
 			infoWindow.setContent('<h2>'+result[0]+'</h2><p>'+result[2][0]+'</p><a href="'+result[3][0]+'">Wikipedia</a>');
-				infoWindow.open(map, marker);
+			infoWindow.open(map, marker);
 		}).fail(function(jqXHR, textStatus) {
 			infoWindow.setContent('Unable to retrieve data');
-				infoWindow.open(map, marker);
+			infoWindow.open(map, marker);
 		});
 
 
