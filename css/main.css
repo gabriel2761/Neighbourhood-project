@@ -1,27 +1,27 @@
 html,
 body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	color: #444;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #444;
 }
 
 main {
-	display: flex;
-	height: 100%;
+    display: flex;
+    height: 100%;
 }
 
 .map {
-	height: 100%;
-	width: 100%;
+    height: 100%;
+    width: 100%;
 }
 
 .list-pane {
-	width: 280px;
-	transition: transform 0.5s;
+    width: 280px;
+    transition: transform 0.5s;
     will-change: transform;
-	transition: width 0.5s;
+    transition: width 0.5s;
 }
 
 .list-pane.visible {
@@ -33,88 +33,88 @@ main {
 }
 
 .listview-items {
-	height: calc(100vh - 66px);
-	background-color: #f6f6f6;
-	overflow-y: scroll;
+    height: calc(100vh - 66px);
+    background-color: #f6f6f6;
+    overflow-y: scroll;
 }
 
 #listview {
-	padding: 0 16px;
+    padding: 0 16px;
 }
 
 #listview-bar {
-	display: flex;
+    display: flex;
 }
 
 #search {
-	width: 100%;
-	border: none;
-	padding: 22px;
-	font-size: 19px;
-	top: 0;
+    width: 100%;
+    border: none;
+    padding: 22px;
+    font-size: 19px;
+    top: 0;
 }
 
 #search:focus {
-	outline: none;
+    outline: none;
 }
+
 
 /** { border: 1px solid #000; }*/
 
 #hamburger-close {
-	color: #777;
-	font-size: 26px;
-	padding: 0 16px;
-	padding-top: 12px;
-	margin: 0;
+    color: #777;
+    font-size: 26px;
+    padding: 0 16px;
+    padding-top: 12px;
+    margin: 0;
 }
 
 #hamburger-close:hover {
-	cursor: pointer;
-	color: #d1739b;
+    cursor: pointer;
+    color: #d1739b;
 }
 
 #hamburger-open {
-	position: absolute;
-	top: 8px;
-	left: 8px;
-	margin: 0;
-	background-color: #fefefe;
-	padding: 0 10px;
-	font-size: 32px;
-	z-index: 5;
-	box-shadow: 0px 2px 4px #888888;
-	transition: left 0.5s;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    margin: 0;
+    background-color: #fefefe;
+    padding: 0 10px;
+    font-size: 32px;
+    z-index: 5;
+    box-shadow: 0px 2px 4px #888888;
+    transition: left 0.5s;
     will-change: transform;
 }
 
 #hamburger-open:hover {
-	cursor: pointer;
-	color: #d1739b;
+    cursor: pointer;
+    color: #d1739b;
 }
 
 #hamburger-open.setHidden {
-	left: -50px;
+    left: -50px;
 }
 
 .location {
-	list-style-type: none;
-	padding: 10px 0;
+    list-style-type: none;
+    padding: 10px 0;
 }
 
 .location:hover {
-	color: #7d46d6;
-	cursor: pointer;
+    color: #7d46d6;
+    cursor: pointer;
 }
 
 .map-error {
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .fa.fa-circle-o-notch.fa-spin {
-	padding: 20px;
-	font-size: 36px;
+    padding: 20px;
+    font-size: 36px;
 }
-

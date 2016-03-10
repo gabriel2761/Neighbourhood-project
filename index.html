@@ -1,34 +1,35 @@
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Neighbourhood</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/main.css">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Neighbourhood</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
-	<main>
-		<p id="hamburger-open" class="hamburger-open setHidden">&#9776;</p>
-		<div id="list-pane" class="list-pane visible">
-			<div id="listview-bar" class="listview-bar">
-				<input id="search" class="search" type="text" data-bind="textInput: keyword" onClick="this.setSelectionRange(0, this.value.length)" placeholder="Search">
-				<p id="hamburger-close" class="hamburger-close">&#9776;</p>
-			</div>
-			<div id="listview-items" class="listview-items">
-				<ul id="listview" class="listview" data-bind="foreach: {data: search(), as: 'location'}">
-					<li class="location" data-bind="text: location.title, click: function() { $parent.click($index) }"></li>
-				</ul>
-			</div>
-		</div>
-		<div id="map" class="map"></div>
-	</main>
+    <main>
+        <p id="hamburger-open" class="hamburger-open setHidden">&#9776;</p>
+        <div id="list-pane" class="list-pane visible">
+            <div id="listview-bar" class="listview-bar">
+                <input id="search" class="search" type="text" data-bind="textInput: keyword" onClick="this.setSelectionRange(0, this.value.length)" placeholder="Search">
+                <p id="hamburger-close" class="hamburger-close">&#9776;</p>
+            </div>
+            <div id="listview-items" class="listview-items">
+                <ul id="listview" class="listview" data-bind="foreach: {data: search(), as: 'location'}">
+                    <li class="location" data-bind="text: location.title, click: function() { $parent.click($index) }"></li>
+                </ul>
+            </div>
+        </div>
+        <div id="map" class="map"></div>
 
-	<script src="bower_components/jquery/dist/jquery.min.js"></script>
-	<script src="bower_components/knockout/dist/knockout.js"></script>
-	<script src="js/main.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFEuVCyd4zzUXeJ8qQ1nzp7uwN9XQiV6g&callback=initMap" onerror="mapError()" async defer></script>
+    </main>
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/knockout/dist/knockout.js"></script>
+    <script src="js/main.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFEuVCyd4zzUXeJ8qQ1nzp7uwN9XQiV6g&callback=initMap" onerror="mapError()" async defer></script>
 </body>
 </html>
