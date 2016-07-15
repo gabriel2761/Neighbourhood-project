@@ -1,0 +1,25 @@
+{
+  "name": "sydney-locations",
+  "version": "1.0.0",
+  "description": "My favourite places in Sydney",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabriel2761/Neighbourhood-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabriel2761/Neighbourhood-project/issues"
+  },
+  "homepage": "https://github.com/gabriel2761/Neighbourhood-project#readme"
+}
